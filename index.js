@@ -179,3 +179,14 @@ const sortedGames = GAMES_JSON.sort((item1, item2) => {
   console.log("Secret Key component 1:", firstGame.name.split(" ")[0]);
   console.log("Secret Key component 2:", secondGame.name.split(" ")[0]);
   
+
+  //optional
+  const searchInput = document.getElementById("search-input");
+searchInput.addEventListener("input", () => {
+    const query = searchInput.value.toLowerCase();
+    const filtered = GAMES_JSON.filter(game => 
+        game.name.toLowerCase().includes(query)
+    );
+    deleteChildElements(gamesContainer);
+    addGamesToPage(filtered);
+});
